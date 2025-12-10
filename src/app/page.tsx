@@ -1,16 +1,17 @@
 import Image from "next/image";
-import homeVN from "./bgimage.png";
-import logo from "./logo.png";
+import homeVN from "../assets/banner/bgimage.png";
+import logo from "../assets/banner/logo.png";
+import Carousel from "./components/Carousel";
 
 function AndroidDownloadButton() {
   return (
     <a
       className="btn btn-primary"
-      href="#"
+      href="https://play.google.com/store/apps/details?id=com.retromart.app"
       target="_blank"
       rel="noopener noreferrer"
     >
-      Tải trên CH Play (sẽ cập nhật sau)
+      Tải trên CH Play
     </a>
   );
 }
@@ -39,14 +40,10 @@ export default function Home() {
           <IOSSoonButton />
         </div>
         <div className="hero-image">
-          <Image
-            src={homeVN}
-            alt="Retro Mart gameplay"
-            priority
-            style={{ width: "100%", height: "auto" }}
-          />
+          <Carousel />
         </div>
       </section>
+
     </main>
   );
 }

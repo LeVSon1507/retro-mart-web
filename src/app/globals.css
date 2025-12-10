@@ -98,3 +98,57 @@ html, body {
   border-radius: 12px;
   overflow: hidden;
 }
+
+.carousel {
+  margin-top: 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 300ms ease;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.carousel-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  max-height: 560px;
+  margin: 0 auto;
+  background: #101016;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.carousel-nav {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--border);
+  border: none;
+}
+
+.dot.active {
+  background: var(--primary);
+}
