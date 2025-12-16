@@ -6,7 +6,10 @@ type DictEntry = { vi: string; en: string };
 
 const dict: Record<string, DictEntry> = {
   brandName: { vi: "Retro Mart", en: "Retro Mart" },
-  androidDownload: { vi: "Tải trên CH Play", en: "Get it on Google Play" },
+  androidDownload: {
+    vi: "Tải trên CH Play",
+    en: "Get it on Google Play (1/1/2026)",
+  },
   iosSoon: { vi: "iOS sẽ cập nhật sau", en: "iOS coming soon" },
   heroTitle: { vi: "Tạp hoá thời 9x", en: "Vietnamese 90s Corner Shop" },
   heroDescription: {
@@ -47,11 +50,23 @@ const dict: Record<string, DictEntry> = {
     en: "Lots of cute retro items. Waiting for Tet events to collect.",
   },
   faqTitle: { vi: "Câu hỏi thường gặp", en: "Frequently Asked Questions" },
-  faq_1_q: { vi: "Game chơi trên máy nào?", en: "Which devices are supported?" },
-  faq_1_a: { vi: "Android có sẵn. iOS sẽ cập nhật sau.", en: "Available on Android. iOS coming soon." },
+  faq_1_q: {
+    vi: "Game chơi trên máy nào?",
+    en: "Which devices are supported?",
+  },
+  faq_1_a: {
+    vi: "Android có sẵn. iOS sẽ cập nhật sau.",
+    en: "Available on Android. iOS coming soon.",
+  },
   faq_2_q: { vi: "Có mất phí không?", en: "Is it free?" },
-  faq_2_a: { vi: "Tải và chơi miễn phí. Có vật phẩm tuỳ chọn.", en: "Free to download and play. Optional items available." },
-  faq_3_q: { vi: "Cập nhật bao lâu một lần?", en: "How frequently do you update?" },
+  faq_2_a: {
+    vi: "Tải và chơi miễn phí. Có vật phẩm tuỳ chọn.",
+    en: "Free to download and play. Optional items available.",
+  },
+  faq_3_q: {
+    vi: "Cập nhật bao lâu một lần?",
+    en: "How frequently do you update?",
+  },
   faq_3_a: {
     vi: "Hàng tuần có hoạt động, hàng tháng có tính năng mới.",
     en: "Weekly activities, monthly new features.",
@@ -99,4 +114,3 @@ export function useLang() {
   if (!ctx) throw new Error("I18nContext missing");
   return { lang: ctx.lang, setLang: ctx.setLang };
 }
-
