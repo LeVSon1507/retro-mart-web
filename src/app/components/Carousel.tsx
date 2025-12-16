@@ -1,13 +1,16 @@
 "use client";
 import Image from "next/image";
-import screen2 from "../../assets/images/mobile-image/2.png";
-import screen3 from "../../assets/images/mobile-image/3.png";
-import screen4 from "../../assets/images/mobile-image/4.png";
-import screen5 from "../../assets/images/mobile-image/5.png";
-import screen6 from "../../assets/images/mobile-image/6.png";
-import screen7 from "../../assets/images/mobile-image/7.png";
-import screenHome from "../../assets/images/mobile-image/home-vn.png";
-import screenNewUI from "../../assets/images/mobile-image/new-mobile-ui.png";
+import { useT } from "../../i18n";
+import sc_220758 from "../../assets/mobile-capture/Simulator Screenshot - IP12 pro - 2025-12-15 at 22.07.58.png";
+import sc_220814 from "../../assets/mobile-capture/Simulator Screenshot - IP12 pro - 2025-12-15 at 22.08.14.png";
+import sc_220820 from "../../assets/mobile-capture/Simulator Screenshot - IP12 pro - 2025-12-15 at 22.08.20.png";
+import sc_220903 from "../../assets/mobile-capture/Simulator Screenshot - IP12 pro - 2025-12-15 at 22.09.03.png";
+import sc_221131 from "../../assets/mobile-capture/Simulator Screenshot - IP12 pro - 2025-12-15 at 22.11.31.png";
+import sc_221134 from "../../assets/mobile-capture/Simulator Screenshot - IP12 pro - 2025-12-15 at 22.11.34.png";
+import sc_221254 from "../../assets/mobile-capture/Simulator Screenshot - IP12 pro - 2025-12-15 at 22.12.45.png";
+import sc_221347 from "../../assets/mobile-capture/Simulator Screenshot - IP12 pro - 2025-12-15 at 22.13.47.png";
+import sc_221358 from "../../assets/mobile-capture/Simulator Screenshot - IP12 pro - 2025-12-15 at 22.13.58.png";
+import sc_221759 from "../../assets/mobile-capture/Simulator Screenshot - IP12 pro - 2025-12-15 at 22.17.59.png";
 
 type Slide = {
   src: any;
@@ -15,22 +18,31 @@ type Slide = {
 };
 
 const slides: Slide[] = [
-  { src: screenHome, alt: "Màn hình chính ứng dụng" },
-  { src: screenNewUI, alt: "Giao diện mới ứng dụng" },
-  { src: screen2, alt: "Màn hình trò chơi 1" },
-  { src: screen3, alt: "Màn hình trò chơi 2" },
-  { src: screen4, alt: "Màn hình trò chơi 3" },
-  { src: screen5, alt: "Màn hình trò chơi 4" },
-  { src: screen6, alt: "Màn hình trò chơi 5" },
-  { src: screen7, alt: "Màn hình trò chơi 6" },
+  { src: sc_220758, alt: "Giao diện ứng dụng - 22:07:58" },
+  { src: sc_220814, alt: "Giao diện ứng dụng - 22:08:14" },
+  { src: sc_220820, alt: "Giao diện ứng dụng - 22:08:20" },
+  { src: sc_220903, alt: "Giao diện ứng dụng - 22:09:03" },
+  { src: sc_221131, alt: "Giao diện ứng dụng - 22:11:31" },
+  { src: sc_221134, alt: "Giao diện ứng dụng - 22:11:34" },
+  { src: sc_221254, alt: "Giao diện ứng dụng - 22:12:45" },
+  { src: sc_221347, alt: "Giao diện ứng dụng - 22:13:47" },
+  { src: sc_221358, alt: "Giao diện ứng dụng - 22:13:58" },
+  { src: sc_221759, alt: "Giao diện ứng dụng - 22:17:59" },
 ];
 
 export default function Carousel() {
-  const [currentIndex, setCurrentIndex] = useCarouselIndex(slides.length);
+  const t = useT();
+  const {
+    index: currentIndex,
+    setCurrentIndex,
+    atStart,
+    atEnd,
+  } = useCarouselIndex(slides.length);
   const { bind } = useSwipeHandlers({
     onSwipeLeft: () => setCurrentIndex(currentIndex + 1),
     onSwipeRight: () => setCurrentIndex(currentIndex - 1),
   });
+  useAutoPlay(currentIndex, setCurrentIndex, slides.length);
 
   return (
     <div className="carousel">
@@ -56,10 +68,11 @@ export default function Carousel() {
       </div>
       <div className="carousel-nav">
         <button
-          className="btn"
+          className="btn btn-carousel"
           onClick={() => setCurrentIndex(currentIndex - 1)}
+          disabled={atStart}
         >
-          Trước
+          {t("prev")}
         </button>
         <div className="dots">
           {slides.map((_, dotIndex) => (
@@ -67,15 +80,16 @@ export default function Carousel() {
               key={dotIndex}
               className={dotIndex === currentIndex ? "dot active" : "dot"}
               onClick={() => setCurrentIndex(dotIndex)}
-              aria-label={`Xem ảnh ${dotIndex + 1}`}
+              aria-label={`${t("prev")} ${dotIndex + 1}`}
             />
           ))}
         </div>
         <button
-          className="btn"
+          className="btn btn-carousel"
           onClick={() => setCurrentIndex(currentIndex + 1)}
+          disabled={atEnd}
         >
-          Sau
+          {t("next")}
         </button>
       </div>
     </div>
@@ -85,11 +99,16 @@ export default function Carousel() {
 function useCarouselIndex(length: number) {
   const [index, setIndex] = useState(0);
   function setCurrentIndex(nextIndex: number) {
-    if (nextIndex < 0) setIndex(length - 1);
-    else if (nextIndex >= length) setIndex(0);
+    if (nextIndex < 0) setIndex(0);
+    else if (nextIndex >= length) setIndex(length - 1);
     else setIndex(nextIndex);
   }
-  return [index, setCurrentIndex] as const;
+  return {
+    index,
+    setCurrentIndex,
+    atStart: index === 0,
+    atEnd: index === length - 1,
+  } as const;
 }
 
 function useSwipeHandlers({
@@ -111,6 +130,19 @@ function useSwipeHandlers({
     startXRef.current = null;
   }
   return { bind: { onPointerDown, onPointerUp } } as const;
+}
+
+function useAutoPlay(
+  currentIndex: number,
+  setCurrentIndex: (nextIndex: number) => void,
+  length: number
+) {
+  React.useEffect(() => {
+    const id = setInterval(() => {
+      setCurrentIndex(currentIndex === length - 1 ? 0 : currentIndex + 1);
+    }, 4000);
+    return () => clearInterval(id);
+  }, [currentIndex, setCurrentIndex, length]);
 }
 
 import React, { useRef, useState } from "react";
