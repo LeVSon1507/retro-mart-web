@@ -8,7 +8,7 @@ const dict: Record<string, DictEntry> = {
   brandName: { vi: "Retro Mart", en: "Retro Mart" },
   androidDownload: {
     vi: "Tải trên CH Play",
-    en: "Get it on Google Play (1/1/2026)",
+    en: "Get it on Google Play",
   },
   iosSoon: { vi: "iOS sẽ cập nhật sau", en: "iOS coming soon" },
   heroTitle: { vi: "Tạp hoá thời 9x", en: "Vietnamese 90s Corner Shop" },

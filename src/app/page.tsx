@@ -32,7 +32,7 @@ function AndroidDownloadButton() {
   return (
     <Button
       as="a"
-      href="https://play.google.com/store/apps/details?id=com.retromart.app"
+      href="https://play.google.com/store/apps/details?id=com.vintagevendor"
       target="_blank"
       rel="noopener noreferrer"
       size="lg"
@@ -315,7 +315,12 @@ export default function Home() {
               >
                 {t("facebook")}
               </Link>
-              <Link href="#" aria-label="YouTube" color="brand.700">
+              <Link
+                href="https://youtu.be/j5dcfCfqaak"
+                aria-label="YouTube"
+                color="brand.700"
+                isExternal
+              >
                 {t("youtube")}
               </Link>
               <Link href="#" aria-label="TikTok" color="brand.700">
