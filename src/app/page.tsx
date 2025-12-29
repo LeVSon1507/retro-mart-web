@@ -90,6 +90,14 @@ export default function Home() {
           </Heading>
         </HStack>
         <HStack spacing={3}>
+          <Link
+            href="/policy"
+            color="brand.700"
+            fontWeight="bold"
+            mr={2}
+          >
+            {t("privacyPolicy")}
+          </Link>
           <AndroidDownloadButton />
           <IOSSoonButton />
           <Button
@@ -327,10 +335,9 @@ export default function Home() {
                 {t("tiktok")}
               </Link>
               <Link
-                href="https://privacy-retromart.vercel.app/"
+                href="/policy"
                 aria-label="Privacy Policy"
                 color="brand.700"
-                isExternal
               >
                 {t("privacyPolicy")}
               </Link>
