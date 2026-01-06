@@ -361,13 +361,13 @@ body {
     align-items: flex-start;
     gap: 12px;
   }
-  
+
   /* Carousel Responsive */
   .carousel-nav .btn-carousel {
     padding: 6px 12px;
     font-size: 13px;
   }
-  
+
   .dot {
     width: 6px;
     height: 6px;

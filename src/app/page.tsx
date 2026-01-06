@@ -91,12 +91,7 @@ export default function Home() {
           </Heading>
         </HStack>
         <HStack spacing={3}>
-          <Link
-            href="/policy"
-            color="brand.700"
-            fontWeight="bold"
-            mr={2}
-          >
+          <Link href="/policy" color="brand.700" fontWeight="bold" mr={2}>
             {t("privacyPolicy")}
           </Link>
           <AndroidDownloadButton />
@@ -129,7 +124,11 @@ export default function Home() {
           >
             {t("heroTitle")}
           </Heading>
-          <Text fontSize={{ base: "md", md: "lg" }} color="cocoa.700" textAlign={{ base: "center", md: "left" }}>
+          <Text
+            fontSize={{ base: "md", md: "lg" }}
+            color="cocoa.700"
+            textAlign={{ base: "center", md: "left" }}
+          >
             {t("heroDescription")}
           </Text>
           <HStack spacing={3} justify={{ base: "center", md: "flex-start" }}>
