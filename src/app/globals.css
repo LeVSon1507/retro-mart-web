@@ -361,19 +361,15 @@ body {
     align-items: flex-start;
     gap: 12px;
   }
-}
-@media (max-width: 768px) {
-  .hero {
-    grid-template-columns: 1fr;
+  
+  /* Carousel Responsive */
+  .carousel-nav .btn-carousel {
+    padding: 6px 12px;
+    font-size: 13px;
   }
-  .features,
-  .testimonials,
-  .faq {
-    grid-template-columns: 1fr;
-  }
-  .footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+  
+  .dot {
+    width: 6px;
+    height: 6px;
   }
 }

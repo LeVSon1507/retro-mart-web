@@ -35,7 +35,7 @@ function AndroidDownloadButton() {
       href="https://play.google.com/store/apps/details?id=com.vintagevendor"
       target="_blank"
       rel="noopener noreferrer"
-      size="lg"
+      size={{ base: "sm", md: "lg" }}
       colorScheme="yellow"
       bg="brand.500"
       _hover={{ bg: "brand.600" }}
@@ -51,11 +51,12 @@ function IOSSoonButton() {
   const t = useT();
   return (
     <Button
-      size="lg"
+      size={{ base: "sm", md: "lg" }}
       variant="outline"
       colorScheme="yellow"
       borderRadius="vintage"
       isDisabled
+      display={{ base: "none", md: "inline-flex" }}
     >
       {t("iosSoon")}
     </Button>
@@ -121,16 +122,17 @@ export default function Home() {
       >
         <Stack flex="1" spacing={5}>
           <Heading
-            size="2xl"
+            size={{ base: "xl", md: "2xl" }}
             bgGradient="linear(to-r, brand.700, cocoa.500)"
             bgClip="text"
+            textAlign={{ base: "center", md: "left" }}
           >
             {t("heroTitle")}
           </Heading>
-          <Text fontSize="lg" color="cocoa.700">
+          <Text fontSize={{ base: "md", md: "lg" }} color="cocoa.700" textAlign={{ base: "center", md: "left" }}>
             {t("heroDescription")}
           </Text>
-          <HStack spacing={3}>
+          <HStack spacing={3} justify={{ base: "center", md: "flex-start" }}>
             <AndroidDownloadButton />
             <IOSSoonButton />
           </HStack>
