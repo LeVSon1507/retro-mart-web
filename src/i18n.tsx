@@ -11,6 +11,7 @@ const dict: Record<string, DictEntry> = {
     en: "Get it on Google Play",
   },
   iosSoon: { vi: "iOS sẽ cập nhật sau", en: "iOS coming soon" },
+  iosDownload: { vi: "Tải trên App Store", en: "Get it on App Store" },
   heroTitle: { vi: "Tạp hoá thời 9x", en: "Vietnamese 90s Corner Shop" },
   heroDescription: {
     vi: "Trò chơi quản lý cửa hàng phong cách hoài niệm. Bán hàng kiểu xưa, sưu tầm đồ retro, mở rộng cửa tiệm.",
@@ -55,8 +56,8 @@ const dict: Record<string, DictEntry> = {
     en: "Which devices are supported?",
   },
   faq_1_a: {
-    vi: "Android có sẵn. iOS sẽ cập nhật sau.",
-    en: "Available on Android. iOS coming soon.",
+    vi: "Có sẵn trên Android và iOS.",
+    en: "Available on Android and iOS.",
   },
   faq_2_q: { vi: "Có mất phí không?", en: "Is it free?" },
   faq_2_a: {

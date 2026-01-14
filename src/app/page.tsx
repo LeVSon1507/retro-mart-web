@@ -47,18 +47,21 @@ function AndroidDownloadButton() {
   );
 }
 
-function IOSSoonButton() {
+function IOSDownloadButton() {
   const t = useT();
   return (
     <Button
+      as="a"
+      href="https://apps.apple.com/vn/app/retromart-t%E1%BA%A1p-ho%C3%A1-th%E1%BB%9Di-9x/id6757414506"
+      target="_blank"
+      rel="noopener noreferrer"
       size={{ base: "sm", md: "lg" }}
       variant="outline"
       colorScheme="yellow"
       borderRadius="vintage"
-      isDisabled
-      display={{ base: "none", md: "inline-flex" }}
+      _hover={{ bg: "cream.200" }}
     >
-      {t("iosSoon")}
+      {t("iosDownload")}
     </Button>
   );
 }
@@ -74,8 +77,10 @@ export default function Home() {
       {/* Header */}
       <Flex
         as="header"
+        direction={{ base: "column", md: "row" }}
         align="center"
         justify="space-between"
+        gap={{ base: 4, md: 0 }}
         bg="cream.100"
         p={4}
         borderRadius="vintage"
@@ -90,12 +95,12 @@ export default function Home() {
             {t("brandName")}
           </Heading>
         </HStack>
-        <HStack spacing={3}>
-          <Link href="/policy" color="brand.700" fontWeight="bold" mr={2}>
+        <Flex wrap="wrap" gap={2} justify="center" align="center">
+          <Link href="/policy" color="brand.700" fontWeight="bold">
             {t("privacyPolicy")}
           </Link>
           <AndroidDownloadButton />
-          <IOSSoonButton />
+          <IOSDownloadButton />
           <Button
             size="sm"
             variant="outline"
@@ -105,7 +110,7 @@ export default function Home() {
           >
             {t("langToggle")}
           </Button>
-        </HStack>
+        </Flex>
       </Flex>
 
       {/* Hero */}
@@ -133,7 +138,7 @@ export default function Home() {
           </Text>
           <HStack spacing={3} justify={{ base: "center", md: "flex-start" }}>
             <AndroidDownloadButton />
-            <IOSSoonButton />
+            <IOSDownloadButton />
           </HStack>
         </Stack>
         <Box
@@ -346,7 +351,7 @@ export default function Home() {
           </Stack>
           <HStack spacing={3}>
             <AndroidDownloadButton />
-            <IOSSoonButton />
+            <IOSDownloadButton />
           </HStack>
         </Flex>
       </Box>
